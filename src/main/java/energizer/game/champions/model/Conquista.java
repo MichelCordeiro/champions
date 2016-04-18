@@ -52,6 +52,6 @@ public class Conquista {
 
 	@Override
 	public String toString() {
-		return nome + "-" + jogo.getNome();
+		return nome;
 	}
 }
