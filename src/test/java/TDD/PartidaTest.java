@@ -71,6 +71,7 @@ public class PartidaTest {
 	public void deveValidarAsConquistasAoFinalDaPartida() {
 		assertEquals("Valida se o PRIMEIRO vencedor recebeu a UMA nova conquista", retornaUmaPartida().get(0).getConquistas().size(), listaCompetidores().get(0).getConquistas().size()+1);
 		assertEquals("Valida se o SEGUNDO vencedor recebeu a DUAS novas conquistas", retornaUmaPartida().get(1).getConquistas().size(), listaCompetidores().get(1).getConquistas().size()+2);
+
 	}
 	
 	
