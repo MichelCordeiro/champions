@@ -97,15 +97,17 @@ public class PartidaTest {
 				competidor.setPonto(competidor.getPonto() + 3);
 				competidor.setIsVencedorDaUltimaPartida(true);
 
-				System.out.println(competidor.getNome() + competidor.getPonto()
-						+ " - Conquistas Antes: "
-						+ competidor.getConquistas().toString());
+				// System.out.println(competidor.getNome() +
+				// competidor.getPonto()
+				// + " - Conquistas Antes: "
+				// + competidor.getConquistas().toString());
 
 				novasConquistas(competidor);
 
-				System.out.println(competidor.getNome() + competidor.getPonto()
-						+ " - Conquistas Novas: "
-						+ competidor.getConquistas().toString());
+				// System.out.println(competidor.getNome() +
+				// competidor.getPonto()
+				// + " - Conquistas Novas: "
+				// + competidor.getConquistas().toString());
 				resumoPartida.add(competidor);
 			} else {
 				competidor.setPonto(competidor.getPonto() + 1);
