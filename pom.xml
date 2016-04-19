@@ -262,7 +262,7 @@
     
     <distributionManagement>
         <repository>
-            <id>central</id>
+            <id>release</id>
             <name>precise32-releases</name>
             <url>http://192.168.33.20:8081/artifactory/libs-release-local</url>
         </repository>
