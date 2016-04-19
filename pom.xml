@@ -4,7 +4,7 @@
   <groupId>michel.cordeiro</groupId>
   <artifactId>champions</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>energizer-game-champions</name>
 
     <developers>
