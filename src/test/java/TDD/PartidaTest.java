@@ -11,7 +11,6 @@ import energizer.game.champions.model.Competidor;
 import energizer.game.champions.model.Conquista;
 import energizer.game.champions.model.Jogo;
 import energizer.game.champions.model.Partida;
-
 import static org.junit.Assert.*;
 
 public class PartidaTest {
@@ -31,14 +30,65 @@ public class PartidaTest {
 		dataPartida.set(2016, Calendar.APRIL, 12);
 
 	}
+	
+	@Test
+	public void deveValidarConsistenciaParaTestarPartida() {
+		assertEquals("Valida a quantidade de conquistas para o teste", 4, conquistas().size());
+		assertEquals("Valida se existe uma conquista para um tipo de jogo diferente", true, conquistas().get(3).getJogo().getNome().contains(JOGO2));
+		assertEquals("Valida se a conquista 1 é refente ao jogo tipo JOGO", true, conquistas().get(0).getJogo().getNome().contains(JOGO));
+		assertEquals("Valida se a conquista 2 é refente ao jogo tipo JOGO", true, conquistas().get(1).getJogo().getNome().contains(JOGO));
+		assertEquals("Valida se a conquista 3 é refente ao jogo tipo JOGO", true, conquistas().get(2).getJogo().getNome().contains(JOGO));
+		
+		assertEquals("Valida a quantidade de competidores para o teste antes da partida", 4, listaCompetidores().size());
+		assertEquals("Valida a pontuação do 1 e 3 competidor antes da partida", true, listaCompetidores().get(0).getPonto() == 5 && listaCompetidores().get(2).getPonto() == 3);
+		assertEquals("Valida a pontuação do 2 e 4 competidor antes da partida", true, listaCompetidores().get(1).getPonto() == 10 && listaCompetidores().get(3).getPonto() == 20);
+	}
 
 	@Test
-	public void deveValidarUmaPartida() {
+	public void deveValidarQuantidadeDeParticipantesAoFinalDaPartida(){
+		assertEquals("Valida quantidade de participantes da ao final da partida", 4 ,retornaUmaPartida().size());
+	}
+	
+	@Test
+	public void deveValidarCompetidoresVencedoresEPerdedoresDaPartida() {
+		assertEquals("Valida se o PRIMEIRO competidor venceu", true, retornaUmaPartida().get(0).getIsVencedorDaUltimaPartida());
+		assertEquals("Valida se o SEGUNDO competidor venceu", true, retornaUmaPartida().get(1).getIsVencedorDaUltimaPartida());
+	
+		assertEquals("Valida se o TERCEIRO competidor venceu", false, retornaUmaPartida().get(2).getIsVencedorDaUltimaPartida());
+		assertEquals("Valida se o QUARTO competidor venceu", false, retornaUmaPartida().get(3).getIsVencedorDaUltimaPartida());
+	}
+
+	@Test
+	public void deveValidarGanhoDePontosDosCompetidoresAoFinalDaPartida() {
+		assertEquals("Valida se o PRIMEIRO vencedor ganhou 3 pontos com a VITORIA", retornaUmaPartida().get(0).getPonto(), listaCompetidores().get(0).getPonto() +3);
+		assertEquals("Valida se o SEGUNDO vencedor ganhou 3 pontos com a VITORIA", retornaUmaPartida().get(1).getPonto(), listaCompetidores().get(1).getPonto() +3);
+		
+		assertEquals("Valida se o TERCEIRO vencedor ganhou 1 pontos com a DERROTA", retornaUmaPartida().get(2).getPonto(), listaCompetidores().get(2).getPonto() +1);
+		assertEquals("Valida se o QUARTO vencedor ganhou 1 pontos com a DERROTA", retornaUmaPartida().get(3).getPonto(), listaCompetidores().get(3).getPonto() +1);
+	}
+
+	@Test
+	public void deveValidarAsConquistasAoFinalDaPartida() {
+		assertEquals("Valida se o PRIMEIRO vencedor recebeu a UMA nova conquista", retornaUmaPartida().get(0).getConquistas().size(), listaCompetidores().get(0).getConquistas().size()+1);
+		assertEquals("Valida se o SEGUNDO vencedor recebeu a DUAS novas conquistas", retornaUmaPartida().get(1).getConquistas().size(), listaCompetidores().get(1).getConquistas().size()+2);
+	}
+	
+	
+
+	@Test
+	public void teste(){
+		System.out.println(retornaUmaPartida());
+	}
+
+
+	private List<Competidor> retornaUmaPartida() {
 
 		partida = new Partida();
 		partida.setDataPartida(dataPartida);
 		partida.setJogo(jogo);
 		partida.setCompetidores(listaCompetidores());
+
+		List<Competidor> resumoPartida = new ArrayList<Competidor>();
 
 		for (Competidor competidor : competidores) {
 			if (competidor.getNome() == "Kaylo"
@@ -55,37 +105,20 @@ public class PartidaTest {
 				System.out.println(competidor.getNome() + competidor.getPonto()
 						+ " - Conquistas Novas: "
 						+ competidor.getConquistas().toString());
-
+				resumoPartida.add(competidor);
 			} else {
 				competidor.setPonto(competidor.getPonto() + 1);
 				competidor.setIsVencedorDaUltimaPartida(false);
+				novasConquistas(competidor);
+				resumoPartida.add(competidor);
 			}
 		}
 
-	}
 
-	@Test
-	public void deveValidarNovasConquistas() {
+		return resumoPartida;
 
 	}
-
-	@Test
-	public void deveValidarConsistenciaParaTestarPartida() {
-
-		assertEquals("Valida a quantidade de conquistas para o teste", 4, conquistas().size());
-		assertEquals("Valida se existe uma conquista para um tipo de jogo diferente", true, conquistas().get(3).getJogo().getNome().contains(JOGO2));
-		assertEquals("Valida se a conquista 1 é refente ao jogo tipo JOGO", true, conquistas().get(0).getJogo().getNome().contains(JOGO));
-		assertEquals("Valida se a conquista 2 é refente ao jogo tipo JOGO", true, conquistas().get(1).getJogo().getNome().contains(JOGO));
-		assertEquals("Valida se a conquista 3 é refente ao jogo tipo JOGO", true, conquistas().get(2).getJogo().getNome().contains(JOGO));
-		
-		assertEquals("Valida a quantidade de competidores para o teste", 4, listaCompetidores().size());
-		assertEquals("Valida a pontuação do 1 e 3 competidor", true, listaCompetidores().get(0).getPonto() == 5 && listaCompetidores().get(2).getPonto() == 3);
-		assertEquals("Valida a pontuação do 2 e 4 competidor", true, listaCompetidores().get(1).getPonto() == 10 && listaCompetidores().get(3).getPonto() == 20);
-		
-
-	}
-
-
+	
 	public List<Conquista> novasConquistas(Competidor competidor) {
 
 		List<Conquista> conquistas = new ArrayList<Conquista>();
@@ -108,6 +141,7 @@ public class PartidaTest {
 		}
 
 		int count = -1;
+		String ultimaConquista = "";
 		for (Conquista novaConquista : novasConquistas) {
 			count = count + 1;
 			if (!competidor.getConquistas().get(count).getNome()
@@ -115,6 +149,9 @@ public class PartidaTest {
 									&& novaConquista.getJogo().getNome() == jogo
 											.getNome()) {
 				competidor.getConquistas().add(novaConquista);
+				ultimaConquista = competidor.getConquistas()
+						.get(competidor.getConquistas().size() - 1).toString();
+				competidor.setUltimaConquista(ultimaConquista);
 			}
 		}
 
