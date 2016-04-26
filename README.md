@@ -1,6 +1,6 @@
-# Energizer Game Champions
+# [Energizer Game Champions!!] (http://michelcordeiro.github.io/champions/)
 
-> Trata-se de um projeto voltado as práticas de facilitação para reuniões diárias de times. Imagine você o quão monótono torna-se a realização rotineira das reuniões de 15 min. Já se perguntou um dos motivos que leva equipes a abandonarem essa reunião com o passar do projeto ?
+> Trata-se de um projeto voltado as práticas de facilitação para reuniões diárias de times. Imagine você o quão monótono torna-se a realização rotineira das reuniões de 15 min. Já se perguntou um dos motivos que levam equipes a abandonarem essa reunião com o passar do projeto ?
 
 > A prática de energizer é aplicada com o intuito de resgatar a energia da equipe e trazer sua concentração através de dinâmicas e jogos.
 
