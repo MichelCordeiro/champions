@@ -1,4 +1,4 @@
-# [Energizer Game Champions!!] (http://michelcordeiro.github.io/champions/)
+# [Energizer Game Champions!!] (http://michelcordeiro.github.io/champions/) 🎲  :neckbeard: 
 
 > Trata-se de um projeto voltado as práticas de facilitação para reuniões diárias de times. Imagine você o quão monótono torna-se a realização rotineira das reuniões de 15 min. Já se perguntou um dos motivos que levam equipes a abandonarem essa reunião com o passar do projeto ?
 
