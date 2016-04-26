@@ -1,9 +1,24 @@
 package energizer.game.champions.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "JOGO")
 public class Jogo {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+
+	@Column(name = "NOME")
 	private String nome;
+
+	@Column(name = "REGRA")
 	private String regra;
 
 	public Jogo(String nome) {

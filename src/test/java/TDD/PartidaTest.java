@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.swing.text.MaskFormatter;
+
+import static org.hamcrest.CoreMatchers.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -74,12 +78,6 @@ public class PartidaTest {
 
 	}
 	
-	
-
-	@Test
-	public void teste(){
-		System.out.println(retornaUmaPartida());
-	}
 
 
 	private List<Competidor> retornaUmaPartida() {
@@ -97,17 +95,8 @@ public class PartidaTest {
 				competidor.setPonto(competidor.getPonto() + 3);
 				competidor.setIsVencedorDaUltimaPartida(true);
 
-				// System.out.println(competidor.getNome() +
-				// competidor.getPonto()
-				// + " - Conquistas Antes: "
-				// + competidor.getConquistas().toString());
-
 				novasConquistas(competidor);
 
-				// System.out.println(competidor.getNome() +
-				// competidor.getPonto()
-				// + " - Conquistas Novas: "
-				// + competidor.getConquistas().toString());
 				resumoPartida.add(competidor);
 			} else {
 				competidor.setPonto(competidor.getPonto() + 1);
@@ -116,7 +105,6 @@ public class PartidaTest {
 				resumoPartida.add(competidor);
 			}
 		}
-
 
 		return resumoPartida;
 
@@ -129,6 +117,7 @@ public class PartidaTest {
 		Conquista cq = new Conquista("master", new Jogo(JOGO), 8);
 		Conquista cq1 = new Conquista("master dos masters", new Jogo(JOGO2), 20);
 		Conquista cq2 = new Conquista("super master", new Jogo(JOGO), 10);
+
 		conquistas.addAll(conquistas());
 		conquistas.add(cq);
 		conquistas.add(cq1);
@@ -164,12 +153,12 @@ public class PartidaTest {
 	private List<Competidor> listaCompetidores() {
 
 		competidores = new ArrayList<Competidor>();
-		
+
 		Competidor c1 = new Competidor("Ray", 5, conquistas(), true);
 		Competidor c2 = new Competidor("Kaylo", 10, conquistas(), false);
 		Competidor c3 = new Competidor("Leia", 3, conquistas(), true);
 		Competidor c4 = new Competidor("Luke", 20, conquistas(), false);
-		
+
 		competidores.add(c1);
 		competidores.add(c2);
 		competidores.add(c3);
@@ -180,15 +169,19 @@ public class PartidaTest {
 	}
 
 	private List<Conquista> conquistas() {
+
 		Conquista c1 = new Conquista("noob", new Jogo(JOGO), 3);
 		Conquista c2 = new Conquista("aprendiz", new Jogo(JOGO), 9);
 		Conquista c3 = new Conquista("padawan", new Jogo(JOGO), 15);
 		Conquista c4 = new Conquista("sabe tudo", new Jogo(JOGO2), 7);
+
 		List<Conquista> conquistas = new ArrayList<Conquista>();
+
 		conquistas.add(c1);
 		conquistas.add(c2);
 		conquistas.add(c3);
 		conquistas.add(c4);
+
 		return conquistas;
 	}
 

@@ -1,9 +1,12 @@
 package energizer.game.champions.model;
 
+
 public class Conquista {
 
 	private int id;
+
 	private String nome;
+
 	private Jogo jogo;
 	private int pontuacaoAlvo;
 
